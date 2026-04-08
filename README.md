@@ -54,4 +54,6 @@ Coba gunakan percakapan di kolom chat *website* untuk berdiskusi layaknya beriku
 * "Tolong cek status tumpukan sampah di area Pasar Minggu saat ini. Apakah kondisinya kritis?"
 * "Jika kita meminta masyarakat untuk melakukan daur ulang plastik sebanyak 100kg, berapa kompensasi pengurangan karbonnya?"
 
+* Boleh gunakan percakapan lain yang berkaitan dengan lingkungan
+
 Selamat Mencoba!
