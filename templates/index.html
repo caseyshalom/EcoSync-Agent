@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>EcoSync Agent | AI for Social Impact</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #00ff41;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .terminal-box {
+            border: 1px solid #00ff41;
+            box-shadow: 0 0 15px #00ff41;
+        }
+    </style>
+</head>
+
+<body class="p-10">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold mb-5 uppercase tracking-widest">>> EcoSync_Agentic_System</h1>
+
+        <div class="terminal-box bg-black p-6 rounded-lg mb-5 h-96 overflow-y-auto" id="chat-window">
+            <p>[SYSTEM]: Agent initialized. Awaiting environmental data input...</p>
+        </div>
+
+        <div class="flex gap-2">
+            <input type="text" id="user-input"
+                class="flex-1 bg-black border border-green-500 p-3 outline-none text-green-400"
+                placeholder="Tulis instruksi dampak sosial/lingkungan...">
+            <button onclick="sendPrompt()"
+                class="bg-green-600 text-black px-6 font-bold hover:bg-green-400">EXECUTE</button>
+        </div>
+    </div>
+
+    <script>
+        async function sendPrompt() {
+            const input = document.getElementById('user-input');
+            const chatWindow = document.getElementById('chat-window');
+            const msg = input.value;
+
+            chatWindow.innerHTML += `<p class="text-white mt-2">USER: ${msg}</p>`;
+            input.value = '';
+
+            const response = await fetch('/ask', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: msg })
+            });
+            const data = await response.json();
+
+            chatWindow.innerHTML += `<p class="mt-2 text-green-400">[AGENT]: ${data.output}</p>`;
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+        }
+    </script>
+</body>
+
+</html>
